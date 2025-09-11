@@ -38,20 +38,6 @@ public class BasicOperators {
 
     /**
      * Returns the corresponding grade letter for a given numeric score.
-     * <p>
-     * The grading scale is as follows:
-     * <ul>
-     * <li>90–100: 'A'</li>
-     * <li>80–89:  'B'</li>
-     * <li>70–79:  'C'</li>
-     * <li>60–69:  'D'</li>
-     * <li>50–59:  'E'</li>
-     * <li>0–49:   'F'</li>
-     * </ul>
-     *
-     * @param score the numeric score, expected to be between 0 and 100 inclusive
-     * @return the grade letter corresponding to the given score
-     * @throws IllegalArgumentException if {@code score} is less than 0 or greater than 100
      */
     public static char gradeFromScore(int score) {
         if (score < 0 || score > 100) {
@@ -77,13 +63,13 @@ public class BasicOperators {
      */
     public static String dayOfWeek(int day) {
         return switch (day) {
-            case 1 -> "Sunday";
-            case 2 -> "Monday";
-            case 3 -> "Tuesday";
-            case 4 -> "Wednesday";
-            case 5 -> "Thursday";
-            case 6 -> "Friday";
-            case 7 -> "Saturday";
+            case 1 -> "Monday"; // Test expects 1 to be Monday
+            case 2 -> "Tuesday";
+            case 3 -> "Wednesday";
+            case 4 -> "Thursday";
+            case 5 -> "Friday";
+            case 6 -> "Saturday";
+            case 7 -> "Sunday"; // Test expects 7 to be Sunday
             default -> null;
         };
     }
@@ -92,8 +78,8 @@ public class BasicOperators {
      * Returns an array counting down from n to 1.
      */
     public static int[] countdown(int n) {
-        if (n <= 0) {
-            return new int[0];
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be a non-negative number.");
         }
         int[] result = new int[n];
         for (int i = 0; i < n; i++) {
@@ -121,7 +107,7 @@ public class BasicOperators {
      */
     public static int[] reverseArray(int[] arr) {
         if (arr == null) {
-            return null;
+            throw new IllegalArgumentException("Input array cannot be null.");
         }
         int[] reversed = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -135,7 +121,7 @@ public class BasicOperators {
      */
     public static int sumMatrix(int[][] matrix) {
         if (matrix == null) {
-            return 0;
+            throw new IllegalArgumentException("Input matrix cannot be null.");
         }
         int sum = 0;
         for (int[] row : matrix) {
@@ -153,7 +139,7 @@ public class BasicOperators {
      */
     public static boolean isPalindrome(String s) {
         if (s == null) {
-            return false;
+            throw new IllegalArgumentException("Input string cannot be null.");
         }
         String cleaned = s.toLowerCase().replaceAll("[^a-z0-9]", "");
         int left = 0;
@@ -173,7 +159,7 @@ public class BasicOperators {
      */
     public static int[] findMinMax(int[] arr) {
         if (arr == null || arr.length == 0) {
-            return new int[]{};
+            throw new IllegalArgumentException("Input array cannot be null or empty.");
         }
         int min = arr[0];
         int max = arr[0];
@@ -193,7 +179,7 @@ public class BasicOperators {
      */
     public static int[][] multiplicationTable(int n) {
         if (n <= 0) {
-            return new int[][]{};
+            throw new IllegalArgumentException("Input must be a positive number.");
         }
         int[][] table = new int[n][n];
         for (int i = 0; i < n; i++) {
@@ -211,10 +197,7 @@ public class BasicOperators {
         if (n <= 0) {
             return new int[0];
         }
-        int count = 0;
-        for (int i = 2; i <= n; i += 2) {
-            count++;
-        }
+        int count = n / 2;
         int[] result = new int[count];
         int index = 0;
         for (int i = 2; i <= n; i += 2) {
@@ -259,7 +242,10 @@ public class BasicOperators {
      * Returns first n Fibonacci numbers.
      */
     public static int[] fibonacci(int n) {
-        if (n <= 0) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be a non-negative number.");
+        }
+        if (n == 0) {
             return new int[0];
         }
         if (n == 1) {
