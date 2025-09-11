@@ -41,7 +41,6 @@ public class BasicOperators {
     }
 
     public static String dayOfWeek(int day) {
-        // Викидаємо виняток для недійсних значень
         if (day < 1 || day > 7) {
             throw new IllegalArgumentException("Invalid day of week: " + day);
         }
@@ -54,7 +53,7 @@ public class BasicOperators {
             case 5 -> "Friday";
             case 6 -> "Saturday";
             case 7 -> "Sunday";
-            default -> null; // Цей блок ніколи не буде досягнутий
+            default -> null; 
         };
     }
 
