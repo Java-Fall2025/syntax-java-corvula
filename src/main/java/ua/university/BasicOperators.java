@@ -2,29 +2,14 @@ package ua.university;
 
 import java.util.Arrays;
 
-/**
- * BasicOperators class contains a set of static methods
- * for practicing Java operators, loops, arrays, and branching.
- */
 public class BasicOperators {
 
-    /**
-     * Returns the sum and average of three integers.
-     *
-     * @param a first integer
-     * @param b second integer
-     * @param c third integer
-     * @return double array where [0] = sum, [1] = average
-     */
     public static double[] sumAndAverage(int a, int b, int c) {
         double sum = a + b + c;
         double average = sum / 3.0;
         return new double[]{sum, average};
     }
 
-    /**
-     * Returns the maximum of three integers.
-     */
     public static int maxOfThree(int a, int b, int c) {
         int max = a;
         if (b > max) {
@@ -36,9 +21,6 @@ public class BasicOperators {
         return max;
     }
 
-    /**
-     * Returns the corresponding grade letter for a given numeric score.
-     */
     public static char gradeFromScore(int score) {
         if (score < 0 || score > 100) {
             throw new IllegalArgumentException("Score must be between 0 and 100.");
@@ -58,25 +40,24 @@ public class BasicOperators {
         }
     }
 
-    /**
-     * Returns the day of the week name for a number 1-7.
-     */
     public static String dayOfWeek(int day) {
+        // Викидаємо виняток для недійсних значень
+        if (day < 1 || day > 7) {
+            throw new IllegalArgumentException("Invalid day of week: " + day);
+        }
+        
         return switch (day) {
-            case 1 -> "Monday"; // Test expects 1 to be Monday
+            case 1 -> "Monday";
             case 2 -> "Tuesday";
             case 3 -> "Wednesday";
             case 4 -> "Thursday";
             case 5 -> "Friday";
             case 6 -> "Saturday";
-            case 7 -> "Sunday"; // Test expects 7 to be Sunday
-            default -> null;
+            case 7 -> "Sunday";
+            default -> null; // Цей блок ніколи не буде досягнутий
         };
     }
 
-    /**
-     * Returns an array counting down from n to 1.
-     */
     public static int[] countdown(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input must be a non-negative number.");
@@ -88,9 +69,6 @@ public class BasicOperators {
         return result;
     }
 
-    /**
-     * Returns factorial of n.
-     */
     public static long factorial(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
@@ -102,9 +80,6 @@ public class BasicOperators {
         return result;
     }
 
-    /**
-     * Returns a reversed copy of the array.
-     */
     public static int[] reverseArray(int[] arr) {
         if (arr == null) {
             throw new IllegalArgumentException("Input array cannot be null.");
@@ -116,9 +91,6 @@ public class BasicOperators {
         return reversed;
     }
 
-    /**
-     * Returns sum of all elements in a 2D array (matrix).
-     */
     public static int sumMatrix(int[][] matrix) {
         if (matrix == null) {
             throw new IllegalArgumentException("Input matrix cannot be null.");
@@ -134,9 +106,6 @@ public class BasicOperators {
         return sum;
     }
 
-    /**
-     * Checks if a string is a palindrome.
-     */
     public static boolean isPalindrome(String s) {
         if (s == null) {
             throw new IllegalArgumentException("Input string cannot be null.");
@@ -154,9 +123,6 @@ public class BasicOperators {
         return true;
     }
 
-    /**
-     * Returns minimum and maximum of an array.
-     */
     public static int[] findMinMax(int[] arr) {
         if (arr == null || arr.length == 0) {
             throw new IllegalArgumentException("Input array cannot be null or empty.");
@@ -174,9 +140,6 @@ public class BasicOperators {
         return new int[]{min, max};
     }
 
-    /**
-     * Returns multiplication table n x n.
-     */
     public static int[][] multiplicationTable(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Input must be a positive number.");
@@ -190,9 +153,6 @@ public class BasicOperators {
         return table;
     }
 
-    /**
-     * Returns all even numbers up to n.
-     */
     public static int[] evenNumbersUpToN(int n) {
         if (n <= 0) {
             return new int[0];
@@ -206,9 +166,6 @@ public class BasicOperators {
         return result;
     }
 
-    /**
-     * Checks if a number is prime.
-     */
     public static boolean isPrime(int n) {
         if (n <= 1) {
             return false;
@@ -221,9 +178,6 @@ public class BasicOperators {
         return true;
     }
 
-    /**
-     * Counts vowels in a string.
-     */
     public static int countVowels(String s) {
         if (s == null) {
             return 0;
@@ -238,9 +192,6 @@ public class BasicOperators {
         return count;
     }
 
-    /**
-     * Returns first n Fibonacci numbers.
-     */
     public static int[] fibonacci(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Input must be a non-negative number.");
@@ -260,9 +211,6 @@ public class BasicOperators {
         return result;
     }
 
-    /**
-     * Returns the transpose of a 2D array (matrix).
-     */
     public static int[][] transpose(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return new int[][]{};
@@ -278,9 +226,6 @@ public class BasicOperators {
         return transposed;
     }
 
-    /**
-     * Returns a sorted copy of the array in ascending order.
-     */
     public static int[] sortArray(int[] arr) {
         if (arr == null) {
             return null;
